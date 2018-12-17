@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         // Set adapter on listview
         adapter = new EntryAdapter(this, R.layout.entry_row, cursor);
         listdays.setAdapter(adapter);
+
+        Intent fromInput = getIntent();
+        JournalEntry retrievedEntry = (JournalEntry) fromInput.getSerializableExtra("journalentry");
+//        String mood = retrievedEntry.getMood();
     }
 
     // Method connected to button for creating new report

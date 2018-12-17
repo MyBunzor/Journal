@@ -3,6 +3,7 @@ package com.example.wvand.journal;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -42,9 +43,6 @@ public class EntryDatabase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table entries (_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, mood TEXT, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP);");
 
-        // Adding sample items
-        db.execSQL("INSERT INTO entries (_id, title, content, mood, timestamp) VALUES(1, 'monday', 'great day', 'super', 1)");
-        db.execSQL("INSERT INTO entries (_id, title, content, mood, timestamp) VALUES(2, 'tuesday', 'bad day', 'horrible', 2)");
     }
 
     @Override
@@ -60,11 +58,12 @@ public class EntryDatabase extends SQLiteOpenHelper {
         SQLiteDatabase writabledb = instance.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
+        String mooder = entry.getMood();
 
         // Add values from inputactivity and put them in contentvalues
         contentValues.put("title", entry.getTitle());
         contentValues.put("content", entry.getContent());
-        contentValues.put("mood", entry.getMood());
+        contentValues.put("mood", mooder);
 
         // Insert the contentvalues in the database
         writabledb.insert("entries", null, contentValues);
