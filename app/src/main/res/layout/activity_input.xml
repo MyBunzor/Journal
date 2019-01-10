@@ -64,7 +64,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:text="good "
+        android:text="good"
         app:layout_constraintEnd_toStartOf="@+id/bad"
         app:layout_constraintHorizontal_bias="0.268"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
